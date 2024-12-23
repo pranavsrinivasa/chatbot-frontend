@@ -1,0 +1,116 @@
+/* src/Chat.css */
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --message-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  --bot-message-bg: #f3f4f6;
+  --input-bg: #ffffff;
+  --background: #f8fafc;
+  --text-light: #ffffff;
+  --text-dark: #1f2937;
+  --hover-color: #4338ca;
+}
+
+.chat-container {
+  min-height: 100vh;
+  padding: 20px;
+  background-image: radial-gradient(circle at 10% 20%, rgb(242, 235, 243) 0%, rgb(234, 241, 249) 90.1%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messages-area {
+  height: 80vh !important; /* Changed from fixed 600px */
+  min-height: 500px;
+  max-height: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.1) !important;
+}
+.messages-container {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+.message-bubble {
+  max-width: 80%;
+  margin: 8px 0;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.message-bubble.user {
+  margin-left: auto;
+}
+
+.message-bubble.assistant {
+  margin-right: auto;
+}
+
+.message-content {
+  padding: 12px 16px;
+  border-radius: 16px;
+  word-break: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.user .message-content {
+  background: var(--message-gradient);
+  color: var(--text-light);
+}
+
+.assistant .message-content {
+  background: var(--bot-message-bg);
+  color: var(--text-dark);
+}
+
+.input-area {
+  padding: 16px;
+  background: var(--input-bg);
+  border-top: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 0 0 16px 16px;
+}
+
+/* Custom scrollbar */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.loading-icon {
+  animation: pulse 1.5s infinite;
+}
